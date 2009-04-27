@@ -25,8 +25,32 @@ into one that looks like this:
         06/01/2009,-123.52," Some Insurance Company Bill"
         06/01/2009,-654.12," Taxes transferred to the IRS"
         
+Or it will convert credit card statements like this one:
+
+        Kreditkartentransaktionen
+        VISA 1234 5678 9101 1121 JOHN DOE
+        
+        Abrechnungsdatum:  20.03.2009
+        Belegdatum;Eingangstag;Verwendungszweck;Fremdwährung;Betrag;Kurs;Betrag;Währung;
+        07.03.2009;09.03.2009;MALDRON HOTEL DUBLIN 2 ; ; ;;-20,00;EUR;
+        11.03.2009;13.03.2009;GITHUB ;USD;-12,00;1,27718;-9,40;EUR;
+        11.03.2009;13.03.2009;1,75% / mind. 1,50 Euro A usla ndseinsatzentgelt ; ; ;;-1,50;EUR;
+        20.03.2009;20.03.2009;Jahresbeitrag  ; ; ;;-30,00;EUR;
+        Summe: ;;;;;;-60,90;EUR
+
+into one that looks like this (by passing the -cc option):
+        
+        07/03/2009,-20.00,"MALDRON HOTEL DUBLIN 2"
+        11/03/2009,-9.40,"GITHUB"
+        11/03/2009,-1.50,"1,75% / mind. 1,50 Euro A usla ndseinsatzentgelt"
+        20/03/2009,-30.00,"Jahresbeitrag"
+        
 Just run it like this:
 
         ruby dbcsvconvert.rb inputfile.csv outputfile.csv
+        
+Or for credit card statements:
+
+        ruby dbcsvconvert.rb -cc inputfile.csv outputfile.csv
         
 Enjoy!        
