@@ -57,9 +57,9 @@ else
   arr_of_arrs.pop #remove last line
   
   if cc
-    arr_of_arrs.each {|row| converted_rows << [row[0].gsub('.', '/'), row[6].gsub(',', '.'), row[2].strip]}
+    arr_of_arrs.each {|row| converted_rows << [row[0].gsub('.', '/'), row[6].gsub('.', '').gsub(',', '.'), row[2].strip]}
   else
-    arr_of_arrs.each {|row| converted_rows << [row[1].gsub('.', '/').insert(6, '20'), (row[3] || row[4]).gsub(',', '.'), row[2].strip]}
+    arr_of_arrs.each {|row| converted_rows << [row[1].gsub('.', '/'), (row[3] || row[4]).gsub('.', '').gsub(',', '.'), row[2].strip]}
   end
 
   File.open(outputfile, 'w') do |out|
